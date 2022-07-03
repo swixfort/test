@@ -1,11 +1,11 @@
-name: Release to draft
+name: Release
 
 on:
   workflow_dispatch:
     inputs:
       tag:
         description: "Specify tag to create"
-        required: true
+        required: false
 
 jobs:
   build:
