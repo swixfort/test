@@ -5,7 +5,7 @@ on:
     inputs:
       tag:
         description: "Specify tag to create"
-        required: false
+        required: true
 
 jobs:
   build:
@@ -24,8 +24,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.run_number }}
-          release_name: ${{ github.event.run_number }}
+          tag_name: r${{ github.run_number }}
+          release_name: ${{ github.event.inputs.tag }}
           draft: false
           prerelease: false
 
