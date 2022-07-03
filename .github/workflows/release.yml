@@ -1,11 +1,11 @@
 name: Release
 
-on:
-  workflow_dispatch:
-    inputs:
-      tag:
-        description: "Specify tag to create"
-        required: true
+#on:
+#  workflow_dispatch:
+#    inputs:
+#      tag:
+#        description: "Specify tag to create"
+#        required: true
 
 jobs:
   build:
@@ -24,7 +24,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: r${{ github.run_number }}
+          tag_name: ${{ github.event.inputs.tag }}
           release_name: ${{ github.event.inputs.tag }}
           draft: false
           prerelease: false
