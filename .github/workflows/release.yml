@@ -1,6 +1,9 @@
 name: Release
 
-#on:
+on:
+  push:
+    branches:
+      - main
 #  workflow_dispatch:
 #    inputs:
 #      tag:
@@ -24,8 +27,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.event.inputs.tag }}
-          release_name: ${{ github.event.inputs.tag }}
+          #tag_name: ${{ github.event.inputs.tag }}
+          #release_name: ${{ github.event.inputs.tag }}
+          tag_name: ${{ github.run_number }}
+          release_name: ${{ github.run_number }}
           draft: false
           prerelease: false
 
